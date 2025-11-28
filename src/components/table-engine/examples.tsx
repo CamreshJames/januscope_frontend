@@ -1,0 +1,306 @@
+import type { TableSchema } from './types';
+import { EditIcon, TrashIcon } from '../../utils/icons';
+
+// Example 1: Services Table Schema
+export const servicesTableSchema: TableSchema = {
+  id: 'services-table',
+  meta: {
+    title: 'Services',
+    subtitle: 'Monitor your services and infrastructure',
+    theme: {
+      primaryColor: '#ff6b35',
+      stripedRows: true,
+      hoverRows: true,
+      bordered: false,
+      compact: false,
+    },
+  },
+  columns: [
+    {
+      id: 'name',
+      header: 'Service Name',
+      accessor: 'name',
+      type: 'text',
+      sortable: true,
+      filterable: true,
+      width: '200px',
+    },
+    {
+      id: 'url',
+      header: 'URL',
+      accessor: 'url',
+      type: 'text',
+      sortable: true,
+      width: '300px',
+    },
+    {
+      id: 'type',
+      header: 'Type',
+      accessor: 'type',
+      type: 'badge',
+      sortable: true,
+      badge: {
+        HTTP: { label: 'HTTP', color: 'info' },
+        HTTPS: { label: 'HTTPS', color: 'success' },
+        TCP: { label: 'TCP', color: 'default' },
+        PING: { label: 'PING', color: 'default' },
+      },
+      width: '100px',
+    },
+    {
+      id: 'status',
+      header: 'Status',
+      accessor: 'active',
+      type: 'badge',
+      sortable: true,
+      badge: {
+        true: { label: 'Active', color: 'success' },
+        false: { label: 'Inactive', color: 'danger' },
+      },
+      width: '100px',
+    },
+    {
+      id: 'checkIntervalSeconds',
+      header: 'Check Interval',
+      accessor: 'checkIntervalSeconds',
+      type: 'number',
+      sortable: true,
+      format: (value) => `${value}s`,
+      width: '120px',
+    },
+    {
+      id: 'createdAt',
+      header: 'Created',
+      accessor: 'createdAt',
+      type: 'date',
+      sortable: true,
+      width: '120px',
+    },
+    {
+      id: 'actions',
+      header: 'Actions',
+      accessor: 'id',
+      type: 'actions',
+      width: '150px',
+      align: 'center',
+      actions: [
+        {
+          label: 'Edit',
+          icon: <EditIcon />,
+          onClick: (row) => console.log('Edit', row),
+          variant: 'ghost',
+        },
+        {
+          label: 'Delete',
+          icon: <TrashIcon />,
+          onClick: (row) => console.log('Delete', row),
+          variant: 'danger',
+        },
+      ],
+    },
+  ],
+  pagination: {
+    enabled: true,
+    pageSize: 10,
+    pageSizeOptions: [10, 25, 50, 100],
+    showTotal: true,
+    showPageSize: true,
+  },
+  selection: {
+    enabled: true,
+    mode: 'multiple',
+    onSelectionChange: (rows) => console.log('Selected:', rows),
+  },
+  searchable: true,
+  refreshable: true,
+  onRefresh: () => console.log('Refresh clicked'),
+};
+
+// Example 2: Users Table Schema
+export const usersTableSchema: TableSchema = {
+  id: 'users-table',
+  meta: {
+    title: 'Users',
+    subtitle: 'Manage system users',
+    theme: {
+      primaryColor: '#ff6b35',
+      stripedRows: false,
+      hoverRows: true,
+      bordered: true,
+      compact: false,
+    },
+  },
+  columns: [
+    {
+      id: 'username',
+      header: 'Username',
+      accessor: 'username',
+      type: 'text',
+      sortable: true,
+      width: '150px',
+    },
+    {
+      id: 'email',
+      header: 'Email',
+      accessor: 'email',
+      type: 'text',
+      sortable: true,
+      width: '200px',
+    },
+    {
+      id: 'role',
+      header: 'Role',
+      accessor: 'role',
+      type: 'badge',
+      sortable: true,
+      badge: {
+        ADMIN: { label: 'Admin', color: 'danger' },
+        USER: { label: 'User', color: 'info' },
+      },
+      width: '100px',
+    },
+    {
+      id: 'approved',
+      header: 'Status',
+      accessor: 'approved',
+      type: 'badge',
+      sortable: true,
+      badge: {
+        true: { label: 'Approved', color: 'success' },
+        false: { label: 'Pending', color: 'warning' },
+      },
+      width: '100px',
+    },
+    {
+      id: 'createdAt',
+      header: 'Joined',
+      accessor: 'createdAt',
+      type: 'date',
+      sortable: true,
+      width: '120px',
+    },
+    {
+      id: 'actions',
+      header: 'Actions',
+      accessor: 'id',
+      type: 'actions',
+      width: '200px',
+      align: 'center',
+      actions: [
+        {
+          label: 'Approve',
+          onClick: (row) => console.log('Approve', row),
+          variant: 'primary',
+          hidden: (row) => row.approved,
+        },
+        {
+          label: 'Edit',
+          icon: <EditIcon />,
+          onClick: (row) => console.log('Edit', row),
+          variant: 'ghost',
+        },
+        {
+          label: 'Delete',
+          icon: <TrashIcon />,
+          onClick: (row) => console.log('Delete', row),
+          variant: 'danger',
+        },
+      ],
+    },
+  ],
+  pagination: {
+    enabled: true,
+    pageSize: 25,
+    pageSizeOptions: [10, 25, 50],
+    showTotal: true,
+    showPageSize: true,
+  },
+  searchable: true,
+  refreshable: true,
+};
+
+// Example 3: Incidents Table Schema
+export const incidentsTableSchema: TableSchema = {
+  id: 'incidents-table',
+  meta: {
+    title: 'Incidents',
+    subtitle: 'Active and resolved incidents',
+    theme: {
+      primaryColor: '#ff6b35',
+      stripedRows: true,
+      hoverRows: true,
+      compact: true,
+    },
+  },
+  columns: [
+    {
+      id: 'serviceId',
+      header: 'Service ID',
+      accessor: 'serviceId',
+      type: 'number',
+      sortable: true,
+      width: '100px',
+    },
+    {
+      id: 'status',
+      header: 'Status',
+      accessor: 'status',
+      type: 'badge',
+      sortable: true,
+      badge: {
+        OPEN: { label: 'Open', color: 'danger' },
+        RESOLVED: { label: 'Resolved', color: 'success' },
+      },
+      width: '100px',
+    },
+    {
+      id: 'errorMessage',
+      header: 'Error Message',
+      accessor: 'errorMessage',
+      type: 'text',
+      width: '300px',
+    },
+    {
+      id: 'startedAt',
+      header: 'Started',
+      accessor: 'startedAt',
+      type: 'date',
+      sortable: true,
+      width: '120px',
+    },
+    {
+      id: 'resolvedAt',
+      header: 'Resolved',
+      accessor: 'resolvedAt',
+      type: 'date',
+      sortable: true,
+      format: (value) => (value ? new Date(value).toLocaleDateString() : 'Ongoing'),
+      width: '120px',
+    },
+    {
+      id: 'actions',
+      header: 'Actions',
+      accessor: 'id',
+      type: 'actions',
+      width: '120px',
+      align: 'center',
+      actions: [
+        {
+          label: 'Resolve',
+          onClick: (row) => console.log('Resolve', row),
+          variant: 'primary',
+          hidden: (row) => row.status === 'RESOLVED',
+        },
+      ],
+    },
+  ],
+  pagination: {
+    enabled: true,
+    pageSize: 15,
+    pageSizeOptions: [15, 30, 50],
+    showTotal: true,
+    showPageSize: true,
+  },
+  searchable: true,
+  refreshable: true,
+};

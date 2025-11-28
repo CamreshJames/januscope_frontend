@@ -1,0 +1,9 @@
+name,code,countryCode,locationId,isActive
+New York Branch,NYC,US,1,true
+London Branch,LON,GB,2,true
+Toronto Branch,TOR,CA,3,true
+Sydney Branch,SYD,AU,4,true
+Berlin Branch,BER,DE,5,true
+Paris Branch,PAR,FR,6,true
+Tokyo Branch,TYO,JP,7,true
+Mumbai Branch,MUM,IN,8,true

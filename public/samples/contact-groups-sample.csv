@@ -1,0 +1,6 @@
+groupName,groupDescription,memberName,email,phoneNumber,telegramHandle
+Support Team,24/7 Support Team,John Doe,john@example.com,+1234567890,@johndoe
+Support Team,,Jane Smith,jane@example.com,+0987654321,@janesmith
+DevOps Team,Infrastructure and Operations,Mike Johnson,mike@example.com,+1122334455,@mikej
+DevOps Team,,Sarah Williams,sarah@example.com,+5544332211,@sarahw
+Management,Executive Team,Robert Brown,robert@example.com,+9988776655,@robertb

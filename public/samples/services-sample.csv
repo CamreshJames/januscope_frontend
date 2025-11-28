@@ -1,0 +1,6 @@
+name,url,checkIntervalSeconds,timeoutMs,maxRetries,retryDelayMs,active
+Google,https://www.google.com,60,5000,3,1000,true
+GitHub,https://github.com,60,5000,3,1000,true
+Stack Overflow,https://stackoverflow.com,120,5000,3,1000,true
+AWS,https://aws.amazon.com,60,10000,3,2000,true
+Microsoft,https://www.microsoft.com,60,5000,3,1000,true
