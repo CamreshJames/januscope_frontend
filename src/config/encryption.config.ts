@@ -9,7 +9,7 @@
  * - Development/production modes
  */
 
-import { EncryptionConfig } from '../utils/encryption';
+import { type EncryptionConfig } from '../utils/encryption';
 
 /**
  * Load encryption configuration from environment
