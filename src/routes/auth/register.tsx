@@ -65,7 +65,7 @@ const registerFormSchema: FormSchema = {
 
 function RegisterPage() {
   const navigate = useNavigate();
-  const { success, error: showError, info } = useToast();
+  const { success, error: showError } = useToast();
   const [error, setError] = useState<string | null>(null);
   const [pendingApproval, setPendingApproval] = useState(false);
   const [submittedEmail, setSubmittedEmail] = useState<string>('');

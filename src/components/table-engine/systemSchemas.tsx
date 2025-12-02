@@ -1,5 +1,5 @@
 import type { TableSchema } from './types';
-import { EditIcon, TrashIcon } from '../../utils/icons';
+// import { EditIcon, TrashIcon } from '../../utils/icons';
 
 // Roles Table Schema
 export const rolesTableSchema: TableSchema = {
